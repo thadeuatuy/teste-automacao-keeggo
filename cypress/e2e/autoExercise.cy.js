@@ -11,8 +11,8 @@ describe('Testes de Login', () => {
   // Teste para verificar se é possível fazer login com credenciais corretas
   it('Deve logar com sucesso usando credenciais corretas', () => {
     cy.visit('https://www.automationexercise.com/login')
-    cy.get('input[data-qa="login-email"]').type('teste2021@teste.com.br') // Insere o email
-    cy.get('input[data-qa="login-password"]').type('teste') // Insere a senha
+    cy.get('input[data-qa="login-email"]').type(Cypress.env('user_name'), { log: false }) // Insere o email
+    cy.get('input[data-qa="login-password"]').type(Cypress.env('user_password'), { log: false }) // Insere a senha
     cy.get('button[data-qa="login-button"]').click() // Clica no botão de login
     cy.get('li a').contains('Logged in as') // Verifica se o usuário está logado
   })
